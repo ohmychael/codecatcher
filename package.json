@@ -1,0 +1,9 @@
+{
+  "name": "code-catcher",
+  "private": true,
+  "description": "Chrome extension that shows Gmail verification codes in the side panel. Not an npm package; this file only holds the test commands.",
+  "scripts": {
+    "test": "node tests/extractor.test.js && node tests/apps-script.test.js && node tests/e2e.test.mjs && node tests/self-update.test.mjs",
+    "test:fast": "node tests/extractor.test.js && node tests/apps-script.test.js"
+  }
+}

@@ -1,0 +1,33 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Verify (split)</title>
+<style>
+  body { font-family: system-ui; display:grid; place-items:center; min-height:100vh; margin:0; }
+  .row { display:flex; gap:8px; }
+  .box { width:44px; height:52px; text-align:center; font-size:24px; }
+</style></head>
+<body>
+  <form>
+    <label>Search <input id="search" type="search" placeholder="Search help"></label>
+    <h2>Enter the 6-digit code</h2>
+    <div class="row">
+      <div><input class="box" maxlength="1" inputmode="numeric"></div>
+      <div><input class="box" maxlength="1" inputmode="numeric"></div>
+      <div><input class="box" maxlength="1" inputmode="numeric"></div>
+      <div><input class="box" maxlength="1" inputmode="numeric"></div>
+      <div><input class="box" maxlength="1" inputmode="numeric"></div>
+      <div><input class="box" maxlength="1" inputmode="numeric"></div>
+    </div>
+  </form>
+  <script>
+    // Typical widget: paste on any box spreads digits across all boxes.
+    const boxes = [...document.querySelectorAll('.box')];
+    boxes.forEach((b, i) => {
+      b.addEventListener('paste', (e) => {
+        e.preventDefault();
+        const digits = (e.clipboardData.getData('text') || '').replace(/\D/g, '').split('');
+        boxes.forEach((x, j) => { x.value = digits[j] || ''; });
+      });
+      b.addEventListener('input', () => { if (b.value && boxes[i + 1]) boxes[i + 1].focus(); });
+    });
+  </script>
+</body></html>

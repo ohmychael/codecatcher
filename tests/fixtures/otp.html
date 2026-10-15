@@ -1,0 +1,24 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Verify</title>
+<style>
+  body { background:#1b1d21; color:#e6e6e6; font-family: Poppins, system-ui, sans-serif; display:grid; place-items:center; min-height:100vh; margin:0; }
+  .card { width: 420px; border:1px solid #33363c; border-radius:6px; padding:48px; }
+  h1 { font-size: 22px; margin: 0 0 8px; }
+  p { color:#c4c4c4; font-size: 14px; }
+  input { width:100%; box-sizing:border-box; padding:12px; background:#1b1d21; color:#fff; border:1px solid #3a3d44; border-radius:4px; font-size:15px; margin: 16px 0 40px; }
+  button { width:100%; padding:12px; border:0; border-radius:4px; font-weight:600; background:#0b3a8a; color:#fff; }
+  button:disabled { background:#5d6066; color:#9a9a9a; }
+</style></head>
+<body>
+  <div class="card">
+    <h1>You're almost there!</h1>
+    <p>We sent a verification code to the phone number on file. Please enter that code below to complete your login.</p>
+    <input id="code" placeholder="Please enter your code here">
+    <button id="continue" disabled>Continue</button>
+  </div>
+  <script>
+    // Mimics a framework: the button only enables when an input event fires.
+    const i = document.getElementById('code'), b = document.getElementById('continue');
+    i.addEventListener('input', () => { b.disabled = i.value.trim().length < 4; });
+  </script>
+</body></html>
